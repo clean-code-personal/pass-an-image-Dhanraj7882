@@ -9,9 +9,13 @@ struct Image {
 
 class ImageBrightener {
 private:
-	Image m_inputImage;
+	Image* m_inputImage;
 public:
 	ImageBrightener(Image& inputImage);
-	int BrightenWholeImage();
-	Image GetImage();
+	int BrightenWholeImage() const;
+	Image* GetImage();
+	~ImageBrightener() {
+		delete m_inputImage;
+		m_inputImage = NULL;
+	}
 };
